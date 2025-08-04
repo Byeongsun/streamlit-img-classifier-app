@@ -48,7 +48,7 @@ if uploaded_files:
 
     for uploaded_file in uploaded_files:
         image = Image.open(uploaded_file).convert("RGB")
-        st.image(image, caption=uploaded_file.name, use_column_width=True)
+        st.image(image, caption=uploaded_file.name, use_container_width=True)
 
         input_tensor = transform(image).unsqueeze(0).to(device)
         with torch.no_grad():
@@ -63,5 +63,5 @@ if uploaded_files:
 
         # 결과 출력
         st.markdown(f"### 🧠 예측 결과: **{class_name}**")
-        st.image(cam_image, caption="Grad-CAM", use_column_width=True)
+        st.image(cam_image, caption="Grad-CAM", use_container_width=True)
         st.markdown("---")
